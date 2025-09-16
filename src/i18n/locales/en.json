@@ -1,0 +1,66 @@
+{
+  "app": {
+    "title": "Localyser Iframe Demo",
+    "loading": "Loading...",
+    "generating": "Generating...",
+    "error": "Error"
+  },
+  "configuration": {
+    "title": "Configuration",
+    "baseUrl": "Base URL",
+    "locationId": "Location ID",
+    "apiToken": "API Token",
+    "baseUrlPlaceholder": "http://localhost:1337",
+    "locationIdPlaceholder": "Enter location ID",
+    "apiTokenPlaceholder": "Enter API token",
+    "generateToken": "Generate Token",
+    "generating": "Generating...",
+    "failedToGenerate": "Failed to generate token"
+  },
+  "routes": {
+    "title": "📱 Select Iframe Type",
+    "reviews": {
+      "title": "📊 Reviews",
+      "description": "Display customer reviews and ratings"
+    },
+    "overview": {
+      "title": "📈 Reporting Overview", 
+      "description": "Business performance dashboard"
+    },
+    "insights": {
+      "title": "🔍 Reporting Insights",
+      "description": "Detailed analytics and insights"
+    }
+  },
+  "theme": {
+    "title": "🎨 Customize Styles",
+    "theme": "Theme",
+    "light": "☀️ Light",
+    "dark": "🌙 Dark",
+    "viewMode": "View Mode",
+    "mode": "Mode",
+    "colors": {
+      "fontColor": "Font Color",
+      "background": "Background",
+      "buttonColor": "Button Color",
+      "buttonText": "Button Text",
+      "buttonHover": "Button Hover Color"
+    },
+    "actions": {
+      "apply": "✨ Apply Styles",
+      "reset": "🔄 Reset"
+    }
+  },
+  "preview": {
+    "title": "📺 Preview",
+    "embedCode": "Embed Code",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "copyToClipboard": "Copy to clipboard"
+  },
+  "language": {
+    "selector": "Language",
+    "english": "English",
+    "arabic": "العربية"
+  }
+}

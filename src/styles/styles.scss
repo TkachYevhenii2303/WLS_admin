@@ -1,0 +1,850 @@
+// Import order matters - variables and mixins first
+@import 'variables';
+@import 'mixins';
+@import 'base';
+@import 'components';
+
+// Main application styles
+.iframe-demo {
+  min-height: 100vh;
+  background-color: $background-secondary;
+  
+  @include fade-in;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $spacing-4;
+    margin-bottom: $spacing-8;
+  
+  @include mobile-only {
+    @include flex-column;
+    align-items: center;
+    gap: $spacing-4;
+    margin-bottom: $spacing-6;
+  }
+  
+  .header-left {
+    @include flex-start;
+    justify-self: start;
+    
+    @include mobile-only {
+      order: 2;
+    }
+  }
+  
+  h1 {
+    margin: 0;
+    text-align: center;
+    justify-self: center;
+    font-family: $font-family-display;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, $primary-color, #7c3aed);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba($primary-color, 0.3);
+    
+    @include mobile-only {
+      order: 1;
+      font-size: $font-size-2xl;
+    }
+    
+    @include desktop-up {
+      font-size: $font-size-4xl;
+    }
+  }
+  
+  .header-right {
+    @include flex-start;
+    justify-self: end;
+    
+    @include mobile-only {
+      order: 3;
+    }
+  }
+}
+
+// Dark theme styles
+.dark-theme {
+  .iframe-demo {
+    background-color: $dark-background-secondary;
+    color: $dark-text-primary;
+  }
+  
+  .config-section,
+  .route-section,
+  .theme-section,
+  .iframe-section {
+    background-color: $dark-background-primary;
+    border-color: $dark-border-color;
+    color: $dark-text-primary;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: $dark-text-primary;
+  }
+  
+  .app-header h1 {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(96, 165, 250, 0.4);
+  }
+  
+  .form-group {
+    label {
+      color: $dark-text-primary;
+    }
+    
+    input {
+      background-color: $dark-background-tertiary;
+      border-color: $dark-border-color;
+      color: $dark-text-primary;
+      
+      &::placeholder {
+        color: $dark-text-muted;
+      }
+      
+      &:focus {
+        border-color: $primary-color;
+      }
+    }
+  }
+  
+  .btn-primary {
+    // Keep primary button colors consistent
+  }
+  
+  .route-btn {
+    background-color: $dark-background-primary;
+    border-color: $dark-border-color;
+    
+    &:hover {
+      border-color: $primary-color;
+      background-color: $dark-background-tertiary;
+    }
+    
+    &.active {
+      background-color: $primary-light;
+      border-color: $primary-color;
+    }
+    
+    .route-title {
+      color: $dark-text-primary;
+    }
+    
+    .route-description {
+      color: $dark-text-secondary;
+    }
+  }
+  
+  .btn-option {
+    background-color: $dark-background-primary;
+    border-color: $dark-border-color;
+    color: $dark-text-secondary;
+    
+    &:hover {
+      background-color: $dark-background-tertiary;
+      color: $dark-text-primary;
+    }
+    
+    &.active {
+      background-color: $primary-color;
+      color: $text-light;
+    }
+  }
+  
+  .language-btn,
+  .theme-btn {
+    background-color: $dark-background-primary;
+    border-color: $dark-border-color;
+    color: $dark-text-secondary;
+    
+    &:hover {
+      background-color: $dark-background-tertiary;
+      color: $dark-text-primary;
+    }
+    
+    &.active {
+      background-color: $primary-color;
+      color: $text-light;
+    }
+  }
+  
+  .language-buttons,
+  .theme-buttons {
+    background-color: $dark-background-primary;
+    border-color: $dark-border-color;
+  }
+  
+  .iframe-container {
+    background-color: $dark-background-primary;
+    border-color: $dark-border-color;
+  }
+  
+  .embed-code {
+    background-color: $dark-background-tertiary;
+    border-color: $dark-border-color;
+    color: $dark-text-primary;
+  }
+  
+  .embed-code-header {
+    label {
+      color: $dark-text-primary;
+    }
+    
+    .copy-btn {
+      background-color: $dark-background-tertiary;
+      color: $dark-text-primary;
+      border: 1px solid $dark-border-color;
+      
+      &:hover {
+        background-color: lighten($dark-background-tertiary, 8%);
+      }
+      
+      &.success {
+        background-color: $success-color;
+        color: $text-light;
+        border-color: $success-color;
+      }
+    }
+  }
+  
+  .preview-tab {
+    color: $dark-text-muted;
+    
+    &:hover {
+      color: $dark-text-primary;
+      background-color: $dark-background-tertiary;
+    }
+    
+    &.active {
+      color: $primary-color;
+    }
+  }
+  
+  .color-picker {
+    border-color: $dark-border-color;
+  }
+  
+  .color-text {
+    background-color: $dark-background-tertiary;
+    border-color: $dark-border-color;
+    color: $dark-text-primary;
+  }
+}
+
+// Language selector styles
+.language-selector {
+  @include flex-column;
+  gap: $spacing-2;
+  min-width: 150px;
+  
+  label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $text-secondary;
+    text-align: center;
+  }
+  
+  .language-buttons {
+    @include flex-start;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    overflow: hidden;
+    background-color: $background-primary;
+    
+    .language-btn {
+      @include button-base;
+      border: none;
+      border-radius: 0;
+      border-right: 1px solid $border-color;
+      background-color: $background-primary;
+      color: $text-secondary;
+      padding: $spacing-2 $spacing-3;
+      font-size: $font-size-sm;
+      flex: 1;
+      
+      &:last-child {
+        border-right: none;
+      }
+      
+      &:hover {
+        background-color: $background-tertiary;
+        color: $text-primary;
+      }
+      
+      &.active {
+        background-color: $primary-color;
+        color: $text-light;
+      }
+    }
+  }
+  
+  @include mobile-only {
+    min-width: 200px;
+  }
+}
+
+// Theme toggle styles
+.theme-toggle {
+  @include flex-column;
+  gap: $spacing-2;
+  min-width: 120px;
+  
+  label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $text-secondary;
+    text-align: center;
+  }
+  
+  .theme-buttons {
+    @include flex-start;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    overflow: hidden;
+    background-color: $background-primary;
+    
+    .theme-btn {
+      @include button-base;
+      border: none;
+      border-radius: 0;
+      border-right: 1px solid $border-color;
+      background-color: $background-primary;
+      color: $text-secondary;
+      padding: $spacing-2 $spacing-3;
+      font-size: $font-size-lg;
+      flex: 1;
+      min-width: 40px;
+      
+      &:last-child {
+        border-right: none;
+      }
+      
+      &:hover {
+        background-color: $background-tertiary;
+        color: $text-primary;
+      }
+      
+      &.active {
+        background-color: $primary-color;
+        color: $text-light;
+      }
+    }
+  }
+  
+  @include mobile-only {
+    min-width: 150px;
+  }
+}
+
+// RTL support
+[dir="rtl"] {
+  .demo-container {
+    direction: rtl;
+  }
+  
+  .app-header {
+    grid-template-columns: 1fr auto 1fr;
+    
+    .header-left {
+      justify-self: end;
+    }
+    
+    .header-right {
+      justify-self: start;
+    }
+    
+    @include mobile-only {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
+  .form-row {
+    direction: rtl;
+  }
+  
+  .control-row {
+    flex-direction: row-reverse;
+  }
+  
+  .color-input-group {
+    flex-direction: row-reverse;
+  }
+  
+  .action-buttons {
+    flex-direction: row-reverse;
+  }
+  
+  .preview-switcher {
+    direction: rtl;
+  }
+  
+  .button-group {
+    flex-direction: row-reverse;
+    
+    .btn-option {
+      border-right: none;
+      border-left: 1px solid $border-color;
+      
+      &:first-child {
+        border-left: none;
+      }
+      
+      &:last-child {
+        border-left: 1px solid $border-color;
+      }
+    }
+  }
+  
+  .language-buttons {
+    .language-btn {
+      border-right: none;
+      border-left: 1px solid $border-color;
+      
+      &:first-child {
+        border-left: none;
+      }
+      
+      &:last-child {
+        border-left: 1px solid $border-color;
+      }
+    }
+  }
+  
+  .theme-buttons {
+    .theme-btn {
+      border-right: none;
+      border-left: 1px solid $border-color;
+      
+      &:first-child {
+        border-left: none;
+      }
+      
+      &:last-child {
+        border-left: 1px solid $border-color;
+      }
+    }
+  }
+  
+}
+
+.demo-container {
+  @include container;
+  padding-top: $spacing-8;
+  padding-bottom: $spacing-8;
+  
+  @include mobile-only {
+    padding-top: $spacing-4;
+    padding-bottom: $spacing-4;
+  }
+}
+
+// Header styles
+h1 {
+  text-align: center;
+  color: $text-primary;
+  margin-bottom: $spacing-8;
+  font-weight: $font-weight-bold;
+  
+  @include mobile-only {
+    margin-bottom: $spacing-6;
+  }
+}
+
+// Configuration section
+.config-section {
+  @include card-base;
+  @include card-padding;
+  margin-bottom: $spacing-8;
+  
+  @include slide-in-up;
+  
+  h2 {
+    color: $text-primary;
+    border-bottom: 1px solid $border-color;
+    padding-bottom: $spacing-3;
+    margin-bottom: $spacing-6;
+  }
+  
+  .form-row {
+    @include grid(2, $spacing-4);
+    
+    @include mobile-only {
+      @include grid(1, $spacing-4);
+    }
+  }
+  
+  .form-group {
+    input {
+      @extend .input;
+    }
+    
+    label {
+      display: block;
+      font-weight: $font-weight-medium;
+      color: $text-primary;
+      margin-bottom: $spacing-2;
+      font-size: $font-size-sm;
+    }
+  }
+  
+  .btn-primary {
+    @extend .btn;
+    @extend .btn-primary;
+    margin-top: $spacing-4;
+    
+    @include mobile-only {
+      width: 100%;
+    }
+  }
+}
+
+// Route selection section
+.route-section {
+  @include card-base;
+  @include card-padding;
+  margin-bottom: $spacing-8;
+  
+  @include slide-in-up;
+  animation-delay: 0.1s;
+  
+  h2 {
+    color: $text-primary;
+    margin-bottom: $spacing-6;
+  }
+  
+  .route-buttons {
+    @include grid(3, $spacing-4);
+    
+    @include tablet-only {
+      @include grid(2, $spacing-4);
+    }
+    
+    @include mobile-only {
+      @include grid(1, $spacing-3);
+    }
+  }
+  
+  .route-btn {
+    @include card-base;
+    background: none;
+    border: 1px solid $border-color;
+    padding: $spacing-4;
+    cursor: pointer;
+    transition: all $transition-normal;
+    text-align: left;
+    
+    &:hover {
+      border-color: $primary-color;
+      box-shadow: $shadow-md;
+      transform: translateY(-2px);
+    }
+    
+    &.active {
+      border-color: $primary-color;
+      background-color: $primary-light;
+      box-shadow: $shadow-md;
+    }
+    
+    .route-title {
+      font-weight: $font-weight-semibold;
+      color: $text-primary;
+      margin-bottom: $spacing-2;
+      font-size: $font-size-base;
+    }
+    
+    .route-description {
+      color: $text-secondary;
+      font-size: $font-size-sm;
+      line-height: $line-height-relaxed;
+    }
+  }
+}
+
+// Theme customization section
+.theme-section {
+  @include card-base;
+  @include card-padding;
+  margin-bottom: $spacing-8;
+  
+  @include slide-in-up;
+  animation-delay: 0.2s;
+  
+  h2 {
+    color: $text-primary;
+    margin-bottom: $spacing-6;
+  }
+  
+  .theme-controls {
+    margin-bottom: $spacing-6;
+  }
+  
+  .control-row {
+    @include flex-wrap;
+    gap: $spacing-6;
+    margin-bottom: $spacing-6;
+    
+    @include mobile-only {
+      @include flex-column;
+      gap: $spacing-4;
+    }
+  }
+  
+  .theme-toggle,
+  .view-mode-toggle {
+    flex: 1;
+    min-width: 200px;
+    
+    label {
+      display: block;
+      font-weight: $font-weight-medium;
+      color: $text-primary;
+      margin-bottom: $spacing-3;
+      font-size: $font-size-sm;
+    }
+    
+    @include mobile-only {
+      min-width: 100%;
+    }
+  }
+  
+  .color-controls {
+    @include grid(2, $spacing-4);
+    
+    @include mobile-only {
+      @include grid(1, $spacing-4);
+    }
+    
+    @include tablet-up {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+  }
+  
+  .color-group {
+    label {
+      display: block;
+      font-weight: $font-weight-medium;
+      color: $text-primary;
+      margin-bottom: $spacing-2;
+      font-size: $font-size-sm;
+    }
+  }
+  
+  .action-buttons {
+    @include flex-start;
+    gap: $spacing-3;
+    
+    @include mobile-only {
+      @include flex-column;
+      gap: $spacing-2;
+    }
+    
+    .btn-primary {
+      @extend .btn;
+      @extend .btn-primary;
+      
+      @include mobile-only {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Preview section
+.iframe-section {
+  @include card-base;
+  @include card-padding;
+  margin-bottom: $spacing-8;
+  
+  @include slide-in-up;
+  animation-delay: 0.3s;
+  
+  h2 {
+    color: $text-primary;
+    margin-bottom: $spacing-6;
+  }
+  
+  .preview-switcher {
+    @extend .tabs;
+    margin-bottom: $spacing-6;
+    
+    .preview-tab {
+      @extend .tab;
+    }
+  }
+  
+  .iframe-container {
+    position: relative;
+    margin-bottom: $spacing-6;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    background-color: $background-primary;
+    box-shadow: $shadow-sm;
+    
+    iframe {
+      width: 100%;
+      height: $iframe-min-height;
+      border: none;
+      display: block;
+      
+      @include mobile-only {
+        height: 400px;
+      }
+    }
+    
+    // Loading state
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba($primary-color, 0.1),
+        transparent
+      );
+      animation: loading 2s infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+  }
+  
+  .embed-code-section {
+    .embed-code-header {
+      @include flex-between;
+      align-items: center;
+      margin-bottom: $spacing-3;
+      
+      label {
+        font-weight: $font-weight-medium;
+        color: $text-primary;
+        font-size: $font-size-sm;
+        margin: 0;
+      }
+      
+      .copy-btn {
+        @include button-base;
+        @include button-size($spacing-2, $spacing-1, $font-size-xs);
+        background-color: $secondary-color;
+        color: $text-light;
+        border: none;
+        transition: all $transition-fast;
+        
+        @include flex-start;
+        gap: $spacing-1;
+        
+        .copy-icon {
+          font-size: $font-size-sm;
+        }
+        
+        &:hover {
+          background-color: $secondary-hover;
+          transform: translateY(-1px);
+        }
+        
+        &.success {
+          background-color: $success-color;
+          
+          &:hover {
+            background-color: darken($success-color, 8%);
+          }
+        }
+        
+        @include mobile-only {
+          @include button-size($spacing-3, $spacing-2, $font-size-xs);
+        }
+      }
+    }
+    
+    .embed-code {
+      @extend .textarea;
+      font-family: $font-family-mono;
+      background-color: $background-tertiary;
+      border-color: $border-color;
+      resize: vertical;
+      min-height: 120px;
+    }
+  }
+}
+
+// Responsive iframe adjustments
+@include mobile-only {
+  .iframe-container iframe {
+    min-height: 300px;
+  }
+}
+
+@include tablet-up {
+  .demo-container {
+    padding-top: $spacing-12;
+    padding-bottom: $spacing-12;
+  }
+}
+
+// Loading animation for iframe
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// Dark mode support (if needed later)
+@media (prefers-color-scheme: dark) {
+  .iframe-demo {
+    // Dark mode styles can be added here
+  }
+}
+
+// Print styles for admin panel
+@media print {
+  .iframe-demo {
+    background: white;
+  }
+  
+  .demo-container {
+    padding: 0;
+    max-width: none;
+  }
+  
+  .iframe-container,
+  .action-buttons {
+    display: none;
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .card {
+    border-width: 2px;
+  }
+  
+  .btn {
+    border-width: 2px;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

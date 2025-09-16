@@ -1,0 +1,397 @@
+@import 'variables';
+@import 'mixins';
+
+// Buttons
+.btn {
+  @include button-base;
+  @include button-size($btn-padding-x, $btn-padding-y, $font-size-sm);
+  
+  // Button variants
+  &.btn-primary {
+    @include button-variant($primary-color, $text-light, $primary-hover);
+  }
+  
+  &.btn-secondary {
+    @include button-variant($background-primary, $text-primary, $background-tertiary);
+    border: 1px solid $border-color;
+  }
+  
+  &.btn-success {
+    @include button-variant($success-color, $text-light);
+  }
+  
+  &.btn-warning {
+    @include button-variant($warning-color, $text-primary);
+  }
+  
+  &.btn-error {
+    @include button-variant($error-color, $text-light);
+  }
+  
+  // Button sizes
+  &.btn-sm {
+    @include button-size($btn-padding-x-sm, $btn-padding-y-sm, $font-size-xs);
+  }
+  
+  &.btn-lg {
+    @include button-size($btn-padding-x-lg, $btn-padding-y-lg, $font-size-base);
+  }
+  
+  // Button states
+  &.btn-loading {
+    position: relative;
+    color: transparent;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      margin: -8px 0 0 -8px;
+      border: 2px solid transparent;
+      border-top-color: currentColor;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+}
+
+// Form controls
+.form-group {
+  margin-bottom: $spacing-4;
+  
+  label {
+    display: block;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-sm;
+    color: $text-primary;
+    margin-bottom: $spacing-2;
+    
+    &.required::after {
+      content: ' *';
+      color: $error-color;
+    }
+  }
+  
+  .form-help {
+    font-size: $font-size-xs;
+    color: $text-muted;
+    margin-top: $spacing-1;
+  }
+  
+  .form-error {
+    font-size: $font-size-xs;
+    color: $error-color;
+    margin-top: $spacing-1;
+    display: flex;
+    align-items: center;
+    gap: $spacing-1;
+  }
+}
+
+.form-row {
+  @include flex-wrap;
+  gap: $spacing-4;
+  margin-bottom: $spacing-4;
+  
+  .form-group {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 0;
+    
+    @include mobile-only {
+      min-width: 100%;
+    }
+  }
+}
+
+.input {
+  @include input-base;
+  @include input-size($input-height, $input-padding-x, $font-size-sm);
+  
+  &.input-sm {
+    @include input-size($input-height-sm, $spacing-2, $font-size-xs);
+  }
+  
+  &.input-lg {
+    @include input-size($input-height-lg, $spacing-4, $font-size-base);
+  }
+}
+
+.textarea {
+  @include input-base;
+  padding: $input-padding-y $input-padding-x;
+  min-height: 80px;
+  resize: vertical;
+  font-family: $font-family-mono;
+  font-size: $font-size-xs;
+  line-height: $line-height-relaxed;
+}
+
+.select {
+  @include input-base;
+  @include input-size($input-height, $input-padding-x, $font-size-sm);
+  cursor: pointer;
+  
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right $spacing-2 center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: $spacing-8;
+  appearance: none;
+}
+
+// Color picker styles
+.color-input-group {
+  @include flex-start;
+  gap: $spacing-2;
+  
+  .color-picker {
+    width: 40px;
+    height: 40px;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    cursor: pointer;
+    background: none;
+    padding: 2px;
+    
+    &::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+    
+    &::-webkit-color-swatch {
+      border: none;
+      border-radius: 4px;
+    }
+  }
+  
+  .color-text {
+    flex: 1;
+    @extend .input;
+  }
+}
+
+// Button groups
+.button-group {
+  @include flex-start;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  overflow: hidden;
+  
+  .btn-option {
+    @include button-base;
+    border: none;
+    border-radius: 0;
+    border-right: 1px solid $border-color;
+    background-color: $background-primary;
+    color: $text-secondary;
+    padding: $spacing-2 $spacing-4;
+    font-size: $font-size-sm;
+    
+    &:last-child {
+      border-right: none;
+    }
+    
+    &:hover {
+      background-color: $background-tertiary;
+      color: $text-primary;
+    }
+    
+    &.active {
+      background-color: $primary-color;
+      color: $text-light;
+    }
+  }
+}
+
+// Cards
+.card {
+  @include card-base;
+  @include card-padding;
+  margin-bottom: $spacing-6;
+  
+  &.card-compact {
+    @include card-padding($spacing-4);
+  }
+  
+  &.card-spacious {
+    @include card-padding($spacing-8);
+  }
+  
+  .card-header {
+    padding: $spacing-4 $spacing-6;
+    border-bottom: 1px solid $border-color;
+    margin: (-$spacing-6) (-$spacing-6) $spacing-4 (-$spacing-6);
+    background-color: $background-tertiary;
+    
+    h3 {
+      margin: 0;
+      font-size: $font-size-lg;
+      color: $text-primary;
+    }
+  }
+  
+  .card-footer {
+    @include flex-between;
+    padding: $spacing-4 $spacing-6;
+    border-top: 1px solid $border-color;
+    margin: $spacing-4 (-$spacing-6) (-$spacing-6) (-$spacing-6);
+    background-color: $background-secondary;
+  }
+}
+
+// Tabs
+.tabs {
+  border-bottom: 1px solid $border-color;
+  margin-bottom: $spacing-6;
+  
+  .tab-list {
+    @include flex-start;
+    gap: $spacing-1;
+    overflow-x: auto;
+    
+    @include custom-scrollbar(4px);
+    
+    @include mobile-only {
+      gap: 0;
+    }
+  }
+  
+  .tab {
+    @include button-base;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    padding: $spacing-3 $spacing-4;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $text-muted;
+    white-space: nowrap;
+    
+    &:hover {
+      color: $text-primary;
+      background-color: $background-tertiary;
+    }
+    
+    &.active {
+      color: $primary-color;
+      border-bottom-color: $primary-color;
+    }
+    
+    @include mobile-only {
+      flex: 1;
+      min-width: 0;
+      text-align: center;
+    }
+  }
+}
+
+// Loading spinner
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid $border-color;
+  border-top-color: $primary-color;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+// Error states
+.error-section {
+  @include card-base;
+  padding: $spacing-4;
+  background-color: $error-light;
+  border-color: $error-color;
+  color: $error-color;
+  margin-bottom: $spacing-4;
+  
+  p {
+    margin: 0;
+    color: inherit;
+    font-weight: $font-weight-medium;
+  }
+}
+
+// Success states
+.success-section {
+  @include card-base;
+  padding: $spacing-4;
+  background-color: $success-light;
+  border-color: $success-color;
+  color: $success-color;
+  margin-bottom: $spacing-4;
+  
+  p {
+    margin: 0;
+    color: inherit;
+    font-weight: $font-weight-medium;
+  }
+}
+
+// Animations
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Utility classes
+.fade-in {
+  @include fade-in;
+}
+
+.slide-in-up {
+  @include slide-in-up;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: $spacing-1; }
+.mb-2 { margin-bottom: $spacing-2; }
+.mb-3 { margin-bottom: $spacing-3; }
+.mb-4 { margin-bottom: $spacing-4; }
+.mb-5 { margin-bottom: $spacing-5; }
+.mb-6 { margin-bottom: $spacing-6; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: $spacing-1; }
+.mt-2 { margin-top: $spacing-2; }
+.mt-3 { margin-top: $spacing-3; }
+.mt-4 { margin-top: $spacing-4; }
+.mt-5 { margin-top: $spacing-5; }
+.mt-6 { margin-top: $spacing-6; }

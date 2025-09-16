@@ -1,0 +1,129 @@
+// Colors
+$primary-color: #2563eb;
+$primary-hover: #1d4ed8;
+$primary-light: #dbeafe;
+$secondary-color: #64748b;
+$secondary-hover: #475569;
+
+$success-color: #10b981;
+$success-light: #d1fae5;
+$warning-color: #f59e0b;
+$warning-light: #fef3c7;
+$error-color: #ef4444;
+$error-light: #fee2e2;
+
+$text-primary: #1f2937;
+$text-secondary: #6b7280;
+$text-muted: #9ca3af;
+$text-light: #f9fafb;
+
+$background-primary: #ffffff;
+$background-secondary: #f8fafc;
+$background-tertiary: #f1f5f9;
+$background-dark: #0f172a;
+
+// Dark theme colors
+$dark-background-primary: #1e293b;
+$dark-background-secondary: #0f172a;
+$dark-background-tertiary: #334155;
+$dark-text-primary: #f1f5f9;
+$dark-text-secondary: #cbd5e1;
+$dark-text-muted: #94a3b8;
+$dark-border-color: #475569;
+
+$border-color: #e2e8f0;
+$border-color-hover: #cbd5e1;
+$border-radius: 8px;
+$border-radius-sm: 4px;
+$border-radius-lg: 12px;
+
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// Typography
+$font-family-sans: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+$font-family-display: 'Orbitron', 'Roboto', sans-serif;
+$font-family-mono: 'Fira Code', 'Monaco', 'Cascadia Code', 'Segoe UI Mono', 'Roboto Mono', monospace;
+
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-base: 1rem;     // 16px
+$font-size-lg: 1.125rem;   // 18px
+$font-size-xl: 1.25rem;    // 20px
+$font-size-2xl: 1.5rem;    // 24px
+$font-size-3xl: 1.875rem;  // 30px
+$font-size-4xl: 2.25rem;   // 36px
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// Spacing
+$spacing-0: 0;
+$spacing-1: 0.25rem;   // 4px
+$spacing-2: 0.5rem;    // 8px
+$spacing-3: 0.75rem;   // 12px
+$spacing-4: 1rem;      // 16px
+$spacing-5: 1.25rem;   // 20px
+$spacing-6: 1.5rem;    // 24px
+$spacing-8: 2rem;      // 32px
+$spacing-10: 2.5rem;   // 40px
+$spacing-12: 3rem;     // 48px
+$spacing-16: 4rem;     // 64px
+$spacing-20: 5rem;     // 80px
+
+// Breakpoints
+$breakpoint-sm: 640px;   // Mobile landscape
+$breakpoint-md: 768px;   // Tablet
+$breakpoint-lg: 1024px;  // Desktop
+$breakpoint-xl: 1280px;  // Large desktop
+$breakpoint-2xl: 1536px; // Extra large desktop
+
+// Grid
+$container-max-width: 1200px;
+$grid-columns: 12;
+$grid-gap: $spacing-6;
+
+// Z-index
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+
+// Transitions
+$transition-fast: 150ms ease-in-out;
+$transition-normal: 250ms ease-in-out;
+$transition-slow: 300ms ease-in-out;
+
+// Form elements
+$input-height: 2.5rem;      // 40px
+$input-height-sm: 2rem;     // 32px
+$input-height-lg: 3rem;     // 48px
+$input-padding-x: $spacing-3;
+$input-padding-y: $spacing-2;
+
+// Button sizes
+$btn-padding-x: $spacing-4;
+$btn-padding-y: $spacing-2;
+$btn-padding-x-sm: $spacing-3;
+$btn-padding-y-sm: $spacing-1;
+$btn-padding-x-lg: $spacing-6;
+$btn-padding-y-lg: $spacing-3;
+
+// Specific component variables
+$sidebar-width: 280px;
+$sidebar-width-collapsed: 80px;
+$header-height: 64px;
+$card-padding: $spacing-6;
+$iframe-min-height: 600px;
